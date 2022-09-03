@@ -27,8 +27,8 @@ Raw data
 （1）Drug-Target Interactions（DrugBank dataset/DTI_8207.csv）: the drug-target interactions were downloaded from DrugBank database (https://go.drugbank.com/releases/latest).<br>
 （2）Drug-Drug Interactions（network/Drugbank_DDI_574616）: the drug-drug interactions were downloaded from DrugBank database (https://go.drugbank.com/releases/latest).<br>
 （3）Protein-Protein Interactions（network/Uniprot_PPI_164797）: the protein-protein interactions were downloaded from STRING database (https://cn.string-db.org/cgi/download?sessionId=bq0JfjmKDFZ5).<br>
-（4）Drug-Disease Associations（network/Dr_D_m_39187.csv and network/Dr_D_t_21908.csv）: the drug-disease associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).<br>
-（5）Protein-Disease Associations（network/P_D_m_29201.csv and network/P_D_t_1933.csv）: the protein-disease associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).
+（4）Drug-Disease Associations（network/Dr_D_m_39187.csv and Dr_D_t_21908.csv）: the drug-disease related associations and drug-disease therapeutic associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).<br>
+（5）Protein-Disease Associations（network/P_D_m_29201.csv and P_D_t_1933.csv）: the protein-disease related associations and protein-disease therapeutic associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).
 
 Construction of datasets（DTI-rand and DTI-net）
 ------
