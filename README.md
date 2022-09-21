@@ -15,9 +15,8 @@ Usage
  All data are csv files of binary relational data<br>
  Unzip the folders GO.rar<br>
  Run HNGDTI.py<br>
- For different settings in the paper, run xxx.py file with a different name (`Remove-DDI&PPI.py`,`Remove-Disease.py`,`Remove-GO.py`,`Remove-GO sim.py`,`Remove-HNet.py`).<br>
+ For different settings in the paper, run xxx.py file with a different name (`Descriptor&GO.py`,`Descriptor&DDI&PPI.py`,`Descriptor&Disease.py`,`Descriptor&Heterogeneous.py`,`GO&Heterogeneous.py`).<br>
  For different k% in GO term semantic similarity networks, run `GO_th.py` with weighted GNNs, run `GO_th_noweight.py` with unweighted GNNs<br>
- For dataset with P:N=1:3 and P:N=1:5, run `HNGDTI_for_neg3(5).py`<br>
  Run `DNN.py` to perform DNN-o and DNN-d
     
 Code and data
