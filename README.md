@@ -18,7 +18,7 @@ Usage
  For different settings in the paper, run xxx.py file with a different name (`Remove-DDI&PPI.py`,`Remove-Disease.py`,`Remove-GO.py`,`Remove-GO sim.py`,`Remove-HNet.py`).<br>
  For different k% in GO term semantic similarity networks, run `GO_th.py` with weighted GNNs, run `GO_th_noweight.py` with unweighted GNNs<br>
  For dataset with P:N=1:3 and P:N=1:5, run `HNGDTI_for_neg3(5).py`<br>
- Run `DNN.py` and `DNN-neg_3_5.py` to perform DNN-o and DNN-d
+ Run `DNN.py` to perform DNN-o and DNN-d
     
 Code and data
 ===
@@ -61,11 +61,6 @@ Equal numbers of negative samples are randomly selected from N3, N5, N7, and N9 
 （1）Under the DrugBank dataset folder, run `select_negative_from_N3_5_7_9_randomly.R` to get 8020 negative samples from N3, N5, N7 and N9. (negative samples/neg3_5_7_9/neg3_8020.csv, neg5_8020.csv, neg7_8020.csv and neg9_8020.csv)<br>
 （2）Under the DrugBank dataset folder, run `select_negative_with_bias_from_N3_5_7_9_randomly.R` to get 8020 negative samples with hidden bias1 from N3, N5, N7 and N9. (negative samples/neg_bias3_5_7_9/neg3_8020.csv, neg5_8020.csv, neg7_8020.csv and neg9_8020.csv)<br>
 （3）Under the DrugBank dataset folder, run `train_valid_test_dataset_neg3_5_7_9.py` to divide the datasets into training set, validation set and testing set, and divide them 5 times by random number seed 1-5.（DTI-neg3_5_7_9/ and DTI-neg-bias3_5_7_9/）
-
-Construction of the imbalance DTI-net dataset (Positive : Negative =1:3 and Positive : Negative =1:5)
-------
-（1）Under the DrugBank dataset folder, run `select_negative_with_3(5)folds_by_network.R` to select negative samples. (negative samples/neg_DTI-net_24060.csv and neg_DTI-net_40100.csv)<br>
-（2）Under the DrugBank dataset folder, run `train_valid_test_dataset_3(5)folds_negative_samples.py` to divide the dataset into training set, validation set and testing set, and divide them 5 times by random number seed 1-5. (DTI-net dataset_with_3(5)fold_neg/3_negative/ and DTI-net dataset_with_3(5)fold_neg/5 negative/)
 
 Calculation of feature
 ------
