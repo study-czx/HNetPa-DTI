@@ -18,7 +18,7 @@ Usage
  For different settings in the paper, run xxx.py file with a different name (`Descriptor&GO.py`，`Descriptor&DDI&PPI.py`，`Descriptor&Disease.py`，`Descriptor&Heterogeneous.py`，`GO&Heterogeneous.py`).<br>
  For different k% in GO term semantic similarity networks, run `GO_th.py` with weighted GNNs, run `GO_th_noweight.py` with unweighted GNNs.<br>
  Run `DNN.py` to perform DNN-o and DNN-d.<br>
- run `prediction_result_10fold.py` to get the prediction scores of all drug-protein pairs.
+ Run `prediction_result_10fold.py` to get the prediction scores of all drug-protein pairs.
 Code and data
 ===
 Raw data
