@@ -75,6 +75,10 @@ Run `cal_GO_sim.R` to calculate the similarity values between GO terms. (GO/GO_s
 （1）Run `cal_fingerprint.R` to calculate the PubChem molecular fingerprint of drugs according to the SMILES strings of drugs.(feature/)<br>
 （2）Run `trans_to_fasta.R` to convert the protein sequence protein_seq_13816.csv to protein_13816.fasta, and then use the iLearnPlus platform to calculate the KSCTriad descriptors for proteins.(feature/)
 
+Predict new DTIs
+------
+run `prediction_result_10fold.py` to get the prediction scores of all drug-protein pairs.
+
 Analysis of prediction results of the DTIs from other databases
 ------
 （1）Under the case studies folder, Run `case studies.R` to view prediction results（average scores of positive samples and negative samples, and the distribution of prediction scores） and get prediction scores（without positive samples and negative samples）.（Predict_scores.csv）<br>
