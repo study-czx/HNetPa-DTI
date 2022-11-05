@@ -16,9 +16,9 @@ Usage
  Unzip the folders GO.rar<br>
  Run HNGDTI.py<br>
  For different settings in the paper, run xxx.py file with a different name (`Descriptor&GO.py`，`Descriptor&DDI&PPI.py`，`Descriptor&Disease.py`，`Descriptor&Heterogeneous.py`，`GO&Heterogeneous.py`).<br>
- For different k% in GO term semantic similarity networks, run `GO_th.py` with weighted GNNs, run `GO_th_noweight.py` with unweighted GNNs<br>
- Run `DNN.py` to perform DNN-o and DNN-d
-    
+ For different k% in GO term semantic similarity networks, run `GO_th.py` with weighted GNNs, run `GO_th_noweight.py` with unweighted GNNs.<br>
+ Run `DNN.py` to perform DNN-o and DNN-d.<br>
+ run `prediction_result_10fold.py` to get the prediction scores of all drug-protein pairs.
 Code and data
 ===
 Raw data
@@ -74,10 +74,6 @@ Run `cal_GO_sim.R` to calculate the similarity values between GO terms. (GO/GO_s
 ### Calculation of molecular fingerprint and protein descriptor
 （1）Run `cal_fingerprint.R` to calculate the PubChem molecular fingerprint of drugs according to the SMILES strings of drugs.(feature/)<br>
 （2）Run `trans_to_fasta.R` to convert the protein sequence protein_seq_13816.csv to protein_13816.fasta, and then use the iLearnPlus platform to calculate the KSCTriad descriptors for proteins.(feature/)
-
-Predict new DTIs
-------
-run `prediction_result_10fold.py` to get the prediction scores of all drug-protein pairs.
 
 Analysis of prediction results of the DTIs from other databases
 ------
