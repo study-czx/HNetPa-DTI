@@ -28,7 +28,8 @@ Raw data
 （3）Protein-Protein Interactions（network/Uniprot_PPI_164797）: the protein-protein interactions were downloaded from STRING database (https://cn.string-db.org/cgi/download?sessionId=bq0JfjmKDFZ5).<br>
 （4）Drug-Disease Associations（network/Dr_D_m_39187.csv and Dr_D_t_21908.csv）: the drug-disease related associations and drug-disease therapeutic associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).<br>
 （5）Protein-Disease Associations（network/P_D_m_29201.csv and P_D_t_1933.csv）: the protein-disease related associations and protein-disease therapeutic associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).<br>
-（6）Protein-GO term Associations（GO/GO_uniprot/GO_MF_9071.csv，GO_BP_18737.csv，GO_CC_9990.csv）：the protein-GO term associations were downloaded from QuickGO browser（https://www.ebi.ac.uk/QuickGO/）.
+（6）Protein-GO term Associations（GO/GO_uniprot/GO_MF_9071.csv，GO_BP_18737.csv，GO_CC_9990.csv）：the protein-GO term associations were downloaded from QuickGO browser（https://www.ebi.ac.uk/QuickGO/）.<br>
+（7）Extra Drug-Target Interactions（case studies/KEGG/DTI_3920.csv and case studies/CHEMBL/DTI_6982.csv）：the extra drug-target interactions were downloaded from KEGG BRITE database（https://www.kegg.jp/brite/br08906） and ChEMBL database（https://chembl.gitbook.io/chembl-interface-documentation/downloads）.
 
 Construction of datasets（DTI-rand and DTI-net）
 ------
@@ -43,6 +44,10 @@ Construction of datasets（DTI-rand and DTI-net）
 In addition, according to the drugs and proteins in the DTI-extra set (drugs and proteins outside the maximum connected subgraph in the drug-protein bipartite network), the set satisfying the condition l_h>=3 was filtered (negative samples/extra_neg3.csv).<br>
 （6）Under the DrugBank dataset folder, run `select_negative_by_network.R` to randomly select negative samples and obtained neg_DTI-net_8020.csv and neg_DTI-net_187.csv, which combined with DTI_8020.csv and DTI_187.csv to form the DTI-net dataset.<br>
 Specifically, to avoid hidden bias1, first, 2 negative samples are selected for each drug and protein from my_need_neg3 (1 negative sample if only 1 is available), for drugs and proteins not present in my_need_neg3, 2 negative samples are selected for each drug and protein from my_need_neg5 (1 negative sample if only 1 is available), and the remaining negative samples are randomly selected from my_need_neg3. (There are 9 drugs and 2 proteins without corresponding drug-protein pairs satisfying l_h>=3, and we select 2 negative samples from N3 for each of them)<br>
+ 
+### Analysis of shortest path lengths in the drug-protein-disease heterogeneous network through DTIs from other databases:
+（1）
+
  
 ### The detailed steps for the construction of the DTI-rand dataset are as follows:
  Under the DrugBank dataset folder，run `select_negative_randomly.R` to randomly select negative samples and obtained neg_DTI-rand_8020.csv and neg_DTI-rand_187.csv, which combined with DTI_8020.csv and DTI_187.csv to form the DTI-rand dataset.<br>
