@@ -44,11 +44,7 @@ Construction of datasets（DTI-rand and DTI-net）
 In addition, according to the drugs and proteins in the DTI-extra set (drugs and proteins outside the maximum connected subgraph in the drug-protein bipartite network), the set satisfying the condition l_h>=3 was filtered (negative samples/extra_neg3.csv).<br>
 （6）Under the DrugBank dataset folder, run `select_negative_by_network.R` to randomly select negative samples and obtained neg_DTI-net_8020.csv and neg_DTI-net_187.csv, which combined with DTI_8020.csv and DTI_187.csv to form the DTI-net dataset.<br>
 Specifically, to avoid hidden bias1, first, 2 negative samples are selected for each drug and protein from my_need_neg3 (1 negative sample if only 1 is available), for drugs and proteins not present in my_need_neg3, 2 negative samples are selected for each drug and protein from my_need_neg5 (1 negative sample if only 1 is available), and the remaining negative samples are randomly selected from my_need_neg3. (There are 9 drugs and 2 proteins without corresponding drug-protein pairs satisfying l_h>=3, and we select 2 negative samples from N3 for each of them)<br>
- 
-### Analysis of shortest path lengths in the drug-protein-disease heterogeneous network through DTIs from other databases:
-Under the case studies folder，run `analysis_shortest_path_length.R` to view the shortest path lengths in the drug-protein-disease heterogeneous network of the DTIs from other databases.
 
- 
 ### The detailed steps for the construction of the DTI-rand dataset are as follows:
  Under the DrugBank dataset folder，run `select_negative_randomly.R` to randomly select negative samples and obtained neg_DTI-rand_8020.csv and neg_DTI-rand_187.csv, which combined with DTI_8020.csv and DTI_187.csv to form the DTI-rand dataset.<br>
  Specifically, to avoid hidden bias1, first, 2 negative samples are selected for each drug and protein from all unlabeled drug-protein pairs. Then, remaining negative samples are randomly selected from all unlabeled drug-protein pairs.
@@ -59,6 +55,10 @@ Under the case studies folder，run `analysis_shortest_path_length.R` to view th
 
 ### The process of dividing the training set, validation set, and testing set is as follows：
 Under the DrugBank dataset folder，run `train_valid_test_dataset.py` to divide the DTI-rand dataset and DTI-net dataset into training set, validation set and testing set, and divide them 5 times by random number seed 1-5. (DTI-rand dataset/ and DTI-net dataset/)
+
+Analysis of shortest path lengths in the drug-protein-disease heterogeneous network
+------
+Under the case studies folder，run `analysis_shortest_path_length.R` to view the shortest path lengths in the drug-protein-disease heterogeneous network of the DTIs from other databases.
 
 Equal numbers of negative samples are randomly selected from N3, N5, N7, and N9 for predicting DTIs (i.e., neg3, neg5, neg7, neg9, and neg3-b, neg5-b, neg7-b, neg9-b in the paper)
 ------
