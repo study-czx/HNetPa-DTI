@@ -46,7 +46,7 @@ In addition, according to the drugs and proteins in the DTI-extra set (drugs and
 Specifically, to avoid hidden bias1, first, 2 negative samples are selected for each drug and protein from my_need_neg3 (1 negative sample if only 1 is available), for drugs and proteins not present in my_need_neg3, 2 negative samples are selected for each drug and protein from my_need_neg5 (1 negative sample if only 1 is available), and the remaining negative samples are randomly selected from my_need_neg3. (There are 9 drugs and 2 proteins without corresponding drug-protein pairs satisfying l_h>=3, and we select 2 negative samples from N3 for each of them)<br>
  
 ### Analysis of shortest path lengths in the drug-protein-disease heterogeneous network through DTIs from other databases:
-（1）
+Under the case studies folder，run `analysis_shortest_path_length.R` to view the shortest path lengths in the drug-protein-disease heterogeneous network of the DTIs from other databases.
 
  
 ### The detailed steps for the construction of the DTI-rand dataset are as follows:
