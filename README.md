@@ -1,4 +1,4 @@
-HNGDTI: A drug-target interaction prediction framework based on drug-protein-disease heterogeneous network and gene ontology annotations
+HNGO-DTI: A Drug-Target Interaction Prediction Framework Based on Drug-Protein-Disease Heterogeneous Network and Gene Ontology Annotations
 ====
  First, we extracted the representations of drugs and proteins in the heterogeneous network with the heterogeneous graph neural networks. Furthermore, considering the correlation between GO terms, we utilized the graph neural networks in the GO term semantic similarity networks to enhance the representations of GO terms, which were passed to proteins via GO term-protein bipartite networks with graph neural networks. Finally, we concatenated the final drug and protein representations and fed them into the deep neural network.
     
