@@ -1,6 +1,6 @@
 library(seqinr)
 
-Protein_Seq = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/feature/protein_seq_13816.csv",header= T)
+Protein_Seq = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/feature/protein_seq_13816.csv",header= T)
 id = Protein_Seq[,1]
 seq = Protein_Seq[,2]
 
@@ -15,4 +15,4 @@ for(i in 1:length(id))
 }
 header_name = as.list(header_name)
 sequence = as.list(seq)
-write.fasta(sequence, names = header_name, file='D:/Users/czx/PycharmProjects/HNGDTI/feature/protein_13816.fasta', open = "w", nbchar = 60, as.string = FALSE)
+write.fasta(sequence, names = header_name, file='D:/Users/czx/PycharmProjects/HNGO-DTI/feature/protein_13816.fasta', open = "w", nbchar = 60, as.string = FALSE)
