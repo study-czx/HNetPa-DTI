@@ -1,11 +1,11 @@
 library(dplyr)
-my_DTI = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-benchmark_set/DTI_8020.csv",header=T)
-my_Drug = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-benchmark_set/Drug_1409.csv",header=T)
-my_Protein = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-benchmark_set/Protein_1648.csv",header=T)
+my_DTI = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/DTI_8020.csv",header=T)
+my_Drug = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/Drug_1409.csv",header=T)
+my_Protein = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/Protein_1648.csv",header=T)
 
 # candidate
-neg3 = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/my_need_neg3.csv",header=T)
-neg5 = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/my_need_neg5.csv",header=T)
+neg3 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/my_need_neg3.csv",header=T)
+neg5 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/my_need_neg5.csv",header=T)
 colnames(neg3)[1] = 'drugbank_id'
 colnames(neg3)[2] = 'uniprot_id'
 colnames(neg5)[1] = 'drugbank_id'
@@ -158,7 +158,7 @@ negative5_1 = unique(negative5_1)
 # for drug and protein not in l_h>=3, 9 drugs and 2 proteins, select from N3
 remain_drug = setdiff(unlist(my_Drug),unlist(unique(neg_all[,1])))
 remain_protein = setdiff(unlist(my_Protein),unlist(unique(neg_all[,2])))
-N3 = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N3.csv",header=T)
+N3 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N3.csv",header=T)
 
 neg = N3
 colnames(neg)[1] = 'drugbank_id'
@@ -253,15 +253,15 @@ n_all = unique(n_all)
 x = unique(n_all[,1])
 y = unique(n_all[,2])
 
-write.csv(n_all,file = "D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/neg_DTI-net_8020.csv",row.names =FALSE,quote = F)
+write.csv(n_all,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg_DTI-net_8020.csv",row.names =FALSE,quote = F)
 
 ###############################################################################################################
 
 # for DTI-extra set
-n0 = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/extra_neg3.csv",header= T)
-dr_id = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-extra_set/Drug_111.csv",header=T)
-p_id = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-extra_set/Protein_123.csv",header=T)
-postive = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-extra_set/DTI_187.csv",header= T)
+n0 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/extra_neg3.csv",header= T)
+dr_id = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-extra_set/Drug_111.csv",header=T)
+p_id = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-extra_set/Protein_123.csv",header=T)
+postive = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-extra_set/DTI_187.csv",header= T)
 
 n_P = length(postive[,1])
 neg = n0
@@ -301,7 +301,7 @@ n_1_2_news = n_1_2_new[rand,]
 x = unique(n_1_2_news[,1])
 y = unique(n_1_2_news[,2])
 
-write.csv(n_1_2_news,file="D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/neg_DTI-net_187.csv",row.names =FALSE,quote = F)
+write.csv(n_1_2_news,file="D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg_DTI-net_187.csv",row.names =FALSE,quote = F)
 
 
 
