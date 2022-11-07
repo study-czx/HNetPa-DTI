@@ -1,6 +1,6 @@
 library(dplyr)
-P = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-benchmark_set/DTI_8020.csv",header=T)
-N = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/neg_DTI-net_8020.csv",header=T)
+P = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/DTI_8020.csv",header=T)
+N = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg_DTI-net_8020.csv",header=T)
 
 colnames(P)[1] = 'drug'
 colnames(P)[2] = 'protein'
@@ -8,8 +8,8 @@ colnames(N)[1] = 'drug'
 colnames(N)[2] = 'protein'
 
 # random, task SR
-write.csv(P,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/random/P.csv",row.names = F,quote = F)
-write.csv(N,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/random/N.csv",row.names = F,quote = F)
+write.csv(P,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/random/P.csv",row.names = F,quote = F)
+write.csv(N,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/random/N.csv",row.names = F,quote = F)
 
 
 # new_drug, task SD
@@ -28,10 +28,10 @@ N1 = semi_join(N,sample_drug,by="drug")
 train_P1 = anti_join(P,P1,by=c("drug","protein"))
 train_N1 = anti_join(N,N1,by=c("drug","protein"))
 
-write.csv(P1,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_drug/P_test.csv",row.names = F,quote = F)
-write.csv(N1,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_drug/N_test.csv",row.names = F,quote = F)
-write.csv(train_P1,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_drug/P_train.csv",row.names = F,quote = F)
-write.csv(train_N1,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_drug/N_train.csv",row.names = F,quote = F)
+write.csv(P1,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_drug/P_test.csv",row.names = F,quote = F)
+write.csv(N1,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_drug/N_test.csv",row.names = F,quote = F)
+write.csv(train_P1,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_drug/P_train.csv",row.names = F,quote = F)
+write.csv(train_N1,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_drug/N_train.csv",row.names = F,quote = F)
 
 # new_protein, task SP
 sample_protein = data.frame(protein=protein_id_all[sample(length(protein_id_all[,1]),200),])
@@ -40,20 +40,20 @@ N2 = semi_join(N,sample_protein,by="protein")
 train_P2 = anti_join(P,P2,by=c("drug","protein"))
 train_N2 = anti_join(N,N2,by=c("drug","protein"))
 
-write.csv(P2,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_protein/P_test.csv",row.names = F,quote = F)
-write.csv(N2,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_protein/N_test.csv",row.names = F,quote = F)
-write.csv(train_P2,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_protein/P_train.csv",row.names = F,quote = F)
-write.csv(train_N2,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_protein/N_train.csv",row.names = F,quote = F)
+write.csv(P2,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_protein/P_test.csv",row.names = F,quote = F)
+write.csv(N2,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_protein/N_test.csv",row.names = F,quote = F)
+write.csv(train_P2,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_protein/P_train.csv",row.names = F,quote = F)
+write.csv(train_N2,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_protein/N_train.csv",row.names = F,quote = F)
 
 # new_drug_protein, task SDP
 train_P = P
 train_N = N
-test_P = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-extra_set/DTI_187.csv",header=T)
-test_N = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/neg_DTI-net_187.csv",header=T)
+test_P = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-extra_set/DTI_187.csv",header=T)
+test_N = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg_DTI-net_187.csv",header=T)
 
-write.csv(train_P,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_drug_protein/P_train.csv",row.names = F,quote = F)
-write.csv(train_N,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_drug_protein/N_train.csv",row.names = F,quote = F)
-write.csv(test_P,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_drug_protein/P_test.csv",row.names = F,quote = F)
-write.csv(test_N,"D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-net/new_drug_protein/N_test.csv",row.names = F,quote = F)
+write.csv(train_P,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_drug_protein/P_train.csv",row.names = F,quote = F)
+write.csv(train_N,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_drug_protein/N_train.csv",row.names = F,quote = F)
+write.csv(test_P,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_drug_protein/P_test.csv",row.names = F,quote = F)
+write.csv(test_N,"D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-net/new_drug_protein/N_test.csv",row.names = F,quote = F)
 
 
