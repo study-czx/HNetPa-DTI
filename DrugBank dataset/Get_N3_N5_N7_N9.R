@@ -1,12 +1,12 @@
-Only_Dr_P_shortest_length = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/Dr_P_shortest_length.csv",header=T)
-all_Drug = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/Drug_1520.csv",header=T)
-all_Protein = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/Protein_1771.csv",header=T)
+Only_Dr_P_shortest_length = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/Dr_P_shortest_length.csv",header=T)
+all_Drug = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/Drug_1520.csv",header=T)
+all_Protein = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/Protein_1771.csv",header=T)
 
 rownames(Only_Dr_P_shortest_length) = unlist(all_Drug)
 colnames(Only_Dr_P_shortest_length) = unlist(all_Protein)
 
-my_Drug = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-benchmark_set/Drug_1409.csv",header=T)
-my_Protein = read.csv("D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/DTI-benchmark_set/Protein_1648.csv",header=T)
+my_Drug = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/Drug_1409.csv",header=T)
+my_Protein = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/Protein_1648.csv",header=T)
 my_only_Dr_P_shortest_length = Only_Dr_P_shortest_length[unlist(my_Drug),unlist(my_Protein)]
 
 dr_d_s_p = my_only_Dr_P_shortest_length
@@ -76,7 +76,7 @@ neg9 = na.omit(negative9)
 x = unique(neg9[,1])
 y = unique(neg9[,2])
 
-write.csv(neg3,file = "D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N3.csv",row.names =FALSE,quote = F)
-write.csv(neg5,file = "D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N5.csv",row.names =FALSE,quote = F)
-write.csv(neg7,file = "D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N7.csv",row.names =FALSE,quote = F)
-write.csv(neg9,file = "D:/Users/czx/PycharmProjects/HNGDTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N9.csv",row.names =FALSE,quote = F)
+write.csv(neg3,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N3.csv",row.names =FALSE,quote = F)
+write.csv(neg5,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N5.csv",row.names =FALSE,quote = F)
+write.csv(neg7,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N7.csv",row.names =FALSE,quote = F)
+write.csv(neg9,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N9.csv",row.names =FALSE,quote = F)
