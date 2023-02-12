@@ -260,7 +260,7 @@ for data_type in data_types:
     print("training on ", data_type)
     for type in types:
         print("task is ",type)
-        output_score = np.zeros(shape=(4, 5))
+        output_score = np.zeros(shape=(6, 5))
         for i in range(5):
             seed_type = "seed" + str(i + 1)
             train_P = np.loadtxt(data_type + seed_type + "/" + type + "/train_P.csv", dtype=str, delimiter=",",
@@ -350,20 +350,26 @@ for data_type in data_types:
                     test_acc = skm.accuracy_score(test_labels, test_scores_label)
                     test_auc = skm.roc_auc_score(test_labels, test_scores)
                     test_aupr = skm.average_precision_score(test_labels, test_scores)
+                    test_mcc = skm.matthews_corrcoef(test_labels, test_scores_label)
+                    test_F1 = skm.f1_score(test_labels, test_scores_label)
                 print('epoch:{},Train Loss: {:.4f},Train Acc: {:.4f},Train Auc: {:.4f},Dev Auc: {:.4f}, Test Acc: {:.4f},Test Auc: {:.4f},TestAUPR: {:.4f}'
                         .format(epoch, train_avloss, train_acc, train_auc, dev_auc, test_acc, test_auc, test_aupr))
                 if dev_auc >= best_auc:
                     best_auc = dev_auc
                     best_epoch = epoch
-                    best_test = [format(test_acc, '.4f'), format(test_auc, '.4f'), format(test_aupr, '.4f')]
+                    best_test = [format(test_acc, '.4f'), format(test_auc, '.4f'), format(test_aupr, '.4f'), format(test_mcc, '.4f'), format(test_F1, '.4f')]
             print("best_dev_AUC:", best_auc)
             print("best_epoch", best_epoch)
             print("test_out", best_test)
-            output_score[0][i], output_score[1][i], output_score[2][i], output_score[3][i] = best_auc, best_test[0], \
-                                                                                             best_test[1], best_test[2]
+            output_score[0][i], output_score[1][i], output_score[2][i], output_score[3][i], output_score[4][i], \
+            output_score[5][i] = best_auc, best_test[0], best_test[1], best_test[2], best_test[3], best_test[4]
 
         print(output_score)
-        mean_acc, mean_auc, mean_mcc = np.nanmean(output_score[1]), np.nanmean(output_score[2]), np.nanmean(output_score[3])
-        std_acc, std_auc, std_mcc = np.nanstd(output_score[1]), np.nanstd(output_score[2]), np.nanstd(output_score[3])
-        print(mean_acc, mean_auc, mean_mcc)
-        print(std_acc, std_auc, std_mcc)
+        mean_acc, mean_auc, mean_aupr, mean_mcc, mean_f1 = \
+            np.nanmean(output_score[1]), np.nanmean(output_score[2]), np.nanmean(output_score[3]), np.nanmean(output_score[4]), \
+            np.nanmean(output_score[5]))
+        std_acc, std_auc, std_aupr, std_mcc, std_f1 = \
+            np.nanstd(output_score[1]), np.nanstd(output_score[2]), np.nanstd(output_score[3]), np.nanstd(output_score[4]), \
+            np.nanstd(output_score[5]))
+        print(mean_acc, mean_auc, mean_aupr, mean_mcc, mean_f1)
+        print(std_acc, std_auc, std_aupr, std_mcc, std_f1)
