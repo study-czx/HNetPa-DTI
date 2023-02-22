@@ -58,13 +58,13 @@ Under the DrugBank dataset folder，run `train_valid_test_dataset.py` to divide 
 
 Analysis of shortest path lengths in the drug-protein-disease heterogeneous network
 ------
-Under the case studies folder，run `analysis_shortest_path_length.R` to view the shortest path lengths in the drug-protein-disease heterogeneous network of the DTIs from other databases.
+Under the case studies folder，run `analysis_shortest_path_length.R` to view l_h of the DTIs from other databases.
 
 Equal numbers of negative samples are randomly selected from N3, N5, N7, and N9 for predicting DTIs (i.e., neg3, neg5, neg7, neg9, and neg3-b, neg5-b, neg7-b, neg9-b in the paper)
 ------
 （1）Under the DrugBank dataset folder, run `select_negative_from_N3_5_7_9_randomly.R` to get 8020 negative samples from N3, N5, N7 and N9. (negative samples/neg3_5_7_9/neg3_8020.csv, neg5_8020.csv, neg7_8020.csv and neg9_8020.csv)<br>
 （2）Under the DrugBank dataset folder, run `select_negative_with_bias_from_N3_5_7_9_randomly.R` to get 8020 negative samples with hidden bias1 from N3, N5, N7 and N9. (negative samples/neg_bias3_5_7_9/neg3_8020.csv, neg5_8020.csv, neg7_8020.csv and neg9_8020.csv)<br>
-（3）Under the DrugBank dataset folder, run `train_valid_test_dataset_neg3_5_7_9.py` to divide the datasets into training set, validation set and testing set, and divide them 5 times by random number seed 1-5.（DTI-neg3_5_7_9/ and DTI-neg-bias3_5_7_9/）
+（3）Under the DrugBank dataset folder, run `train_valid_test_dataset_neg3_5_7_9.py` to divide the datasets into training/validation/testing set, and divide them 5 times.（DTI-neg3_5_7_9/ and DTI-neg-bias3_5_7_9/）
 
 Calculation of feature
 ------
