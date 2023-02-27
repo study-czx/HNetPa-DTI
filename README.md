@@ -31,7 +31,7 @@ Raw data
 （6）Protein-GO term Associations（GO/GO_uniprot/GO_MF_9071.csv，GO_BP_18737.csv，GO_CC_9990.csv）：the protein-GO term associations were downloaded from QuickGO browser（https://www.ebi.ac.uk/QuickGO/）.<br>
 （7）Extra Drug-Target Interactions（case studies/KEGG/DTI_3920.csv and case studies/CHEMBL/DTI_6982.csv）：the extra drug-target interactions were downloaded from KEGG BRITE database（https://www.kegg.jp/brite/br08906） and ChEMBL database（https://chembl.gitbook.io/chembl-interface-documentation/downloads）.
 
-Construction of datasets（DTI-rand and DTI-net）
+Construction of datasets
 ------
  First, the DrugBank dataset folder contains the files DTI_8207.csv, Drug_1520.csv, Protein_1771.csv.
  
@@ -54,14 +54,14 @@ Under the DrugBank dataset folder<br>
 （1）run `train_test_splict_DTI-rand.R` to divide the testing set (SR, SD, SP, SDP) of DTI-rand dataset. <br>
 （2）run `train_test_splict_DTI-net.R` to divide the testing set (SR, SD, SP, SDP) of DTI-net dataset. <br>
 
-### The process of dividing the training set, validation set, and testing set is as follows：
+### The process of dividing the training/validation/testing set is as follows：
 Under the DrugBank dataset folder，run `train_valid_test_dataset.py` to divide the dataset into training/validation/testing set.
 
-Analysis of shortest path lengths in the drug-protein-disease heterogeneous network
+Analysis of shortest path lengths in the heterogeneous network
 ------
 Under the case studies folder，run `analysis_shortest_path_length.R` to view l_h of the DTIs of KEGG database and ChEMBL database.
 
-Equal numbers of negative samples are randomly selected from N3, N5, N7, and N9 for predicting DTIs (i.e., neg3, neg5, neg7, neg9, and neg3-b, neg5-b, neg7-b, neg9-b in the paper)
+Negative samples from N3-N9 (i.e., neg3-neg9, and neg3-b-neg9-b in the paper)
 ------
 Under the DrugBank dataset folder<br>
 （1）Run `select_negative_from_N3_5_7_9_randomly.R` to get negative samples from N3-N9.<br>
@@ -77,7 +77,7 @@ Run `cal_GO_sim.R` to calculate GO similarity values. (GO/GO_sim/)
 （1）Run `cal_fingerprint.R` to calculate the PubChem fingerprint.(feature/)<br>
 （2）Run `trans_to_fasta.R` to convert protein_seq_13816.csv to protein_13816.fasta, and then use the iLearnPlus to calculate the KSCTriad.(feature/)
 
-Analysis of prediction results of the DTIs from other databases
+Analysis of prediction scores of the DTIs from other databases
 ------
 Under the case studies folder<br>
 （1）Run `case studies.R` to view prediction scores of training sets and predict other scores.（Predict_scores.csv）<br>
