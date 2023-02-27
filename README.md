@@ -37,9 +37,9 @@ Construction of datasets（DTI-rand and DTI-net）
  
 ### The detailed steps for the construction of the DTI-net dataset are as follows:
 （1）Under the DrugBank dataset folder<br>
-run `Get_max_subG.py` to divide DTIs into two parts (DTI-benchmark set and DTI-extra set).<br>
+run `Get_max_subG.py` to divide the DTIs into two parts (DTI-benchmark and DTI-extra).<br>
 run `Get_shortest_length.py` to get l_b of all drug-protein pairs (Dr_P_shortest_length.csv).<br>
-run `Get_N3_N5_N7_N9.R` to classify all unlabeled drug-protein pairs into N3-N9 according to l_b (negative samples/DTI benchmark N3_5_7_9).<br>
+run `Get_N3_N5_N7_N9.R` to classify unlabeled drug-protein pairs into N3-N9 according to l_b (negative samples/DTI benchmark N3_5_7_9).<br>
 （2）Run `Get_l_h_heterogeneous.py` to get l_h of all drug-protein pairs in HNet-DrPD (Dr_D_P_shortest_length.csv).<br>
 （3）Under the DrugBank dataset folder<br>
 run `Get_need_neg.R` to select candidate negative samples based on l_h>=3 (negative samples/my_need_neg3, my_need_neg5.csv and extra_neg3.csv).<br>
@@ -50,15 +50,15 @@ run `select_negative_by_network.R` to get neg_DTI-net_8020.csv and neg_DTI-net_1
          
 ### Divide the testing set according to different prediction tasks (SR, SD, SP, and SDP)：
 Under the DrugBank dataset folder<br>
-（1）run `train_test_splict_DTI-rand.R` to divide the testing set (SR, SD, SP, SDP) on DTI-rand dataset. <br>
-（2）run `train_test_splict_DTI-net.R` to divide the testing set (SR, SD, SP, SDP) on DTI-net dataset. <br>
+（1）run `train_test_splict_DTI-rand.R` to divide the testing set (SR, SD, SP, SDP) of DTI-rand dataset. <br>
+（2）run `train_test_splict_DTI-net.R` to divide the testing set (SR, SD, SP, SDP) of DTI-net dataset. <br>
 
 ### The process of dividing the training set, validation set, and testing set is as follows：
-Under the DrugBank dataset folder，run `train_valid_test_dataset.py` to divide dataset into training/validation/testing set.
+Under the DrugBank dataset folder，run `train_valid_test_dataset.py` to divide the dataset into training/validation/testing set.
 
 Analysis of shortest path lengths in the drug-protein-disease heterogeneous network
 ------
-Under the case studies folder，run `analysis_shortest_path_length.R` to view l_h of the DTIs of other databases.
+Under the case studies folder，run `analysis_shortest_path_length.R` to view l_h of the DTIs of KEGG database and ChEMBL database.
 
 Equal numbers of negative samples are randomly selected from N3, N5, N7, and N9 for predicting DTIs (i.e., neg3, neg5, neg7, neg9, and neg3-b, neg5-b, neg7-b, neg9-b in the paper)
 ------
@@ -73,11 +73,11 @@ Calculation of feature
 Run `cal_GO_sim.R` to calculate GO similarity values. (GO/GO_sim/)
 
 ### Calculation of molecular fingerprint and protein descriptor
-（1）Run `cal_fingerprint.R` to calculate the PubChem fingerprint of drugs.(feature/)<br>
-（2）Run `trans_to_fasta.R` to convert protein_seq_13816.csv to protein_13816.fasta, and then use the iLearnPlus platform to calculate the KSCTriad.(feature/)
+（1）Run `cal_fingerprint.R` to calculate the PubChem fingerprint.(feature/)<br>
+（2）Run `trans_to_fasta.R` to convert protein_seq_13816.csv to protein_13816.fasta, and then use the iLearnPlus to calculate the KSCTriad.(feature/)
 
 Analysis of prediction results of the DTIs from other databases
 ------
 Under the case studies folder<br>
-（1）Run `case studies.R` to view prediction results of know DTIs and get prediction scores of other drug-protein pairs.（Predict_scores.csv）<br>
-（2）Run `analysis_scores.R` to view the distribution of the prediction scores of know DTIs from the KEGG database and ChEMBL database.
+（1）Run `case studies.R` to view prediction scores of training sets and predict other scores.（Predict_scores.csv）<br>
+（2）Run `analysis_scores.R` to view the prediction scores of the DTIs of KEGG database and ChEMBL database.
