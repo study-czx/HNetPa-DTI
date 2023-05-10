@@ -1,4 +1,4 @@
-Prediction of Drug-Target Interactions with High-Quality Negative Samples and A Network-Based Deep Learning Framework
+HNetGO-DTI:A drug-target interaction prediction framework based on drug-protein-disease heterogeneous network and gene ontology annotations
 ====
     
 The environment of HNetGO-DTI
