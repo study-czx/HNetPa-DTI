@@ -1,7 +1,7 @@
 HNetGO-DTI: A Drug-Target Interaction Prediction Framework Based on Drug-Protein-Disease Heterogeneous Network and Gene Ontology Annotations
 ====
     
-The environment of HNGDTI
+The environment of HNetGO-DTI
 ===
  python 3.8.8<br>
  cuda 10.2 - cudnn 7.6.5<br>
