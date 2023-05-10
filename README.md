@@ -1,4 +1,4 @@
-HNGO-DTI: A Drug-Target Interaction Prediction Framework Based on Drug-Protein-Disease Heterogeneous Network and Gene Ontology Annotations
+HNetGO-DTI: A Drug-Target Interaction Prediction Framework Based on Drug-Protein-Disease Heterogeneous Network and Gene Ontology Annotations
 ====
     
 The environment of HNGDTI
