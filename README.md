@@ -1,4 +1,4 @@
-HNetGO-DTI:A drug-target interaction prediction framework based on drug-protein-disease heterogeneous network and gene ontology annotations
+HNetPa-DTI:A drug-target interaction prediction framework based on drug-protein-disease heterogeneous network and gene ontology annotations
 ====
     
 The environment of HNetGO-DTI
