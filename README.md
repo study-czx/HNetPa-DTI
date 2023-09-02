@@ -1,6 +1,6 @@
 HNetPa-DTI:A drug-target interaction prediction framework based on drug-protein-disease heterogeneous network and gene ontology annotations
 ====
-![image](model.tif)
+![image](model.jpg)
 The environment of HNetGO-DTI
 ===
  python 3.8.8<br>
