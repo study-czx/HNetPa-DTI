@@ -14,10 +14,12 @@ Usage
  All data are csv files of binary relational data<br>
  Unzip the folders GO.rar<br>
  Run HNetPa-DTI.py<br>
- For different settings in the paper, run xxx.py file with a different name (`-Descriptor.py`，`Descriptor&DDI&PPI.py`，`Descriptor&Disease.py`，`Descriptor&Heterogeneous.py`，`GO&Heterogeneous.py`).<br>
- For different k% in GO term semantic similarity networks, run `GO_th.py` with weighted GNNs, run `GO_th_noweight.py` with unweighted GNNs.<br>
+ For neg3, neg5, neg7, neg9, neg3-bias, neg5-bias, neg7-bias and neg9-bias dataset, and two imbalanced datasets，run `HNetPa-DTI_Neg3579_and_neg3_5.py`.<br>
+ Run `HNetPa-DTI_for_different_type_dataset.py` to perform HNetPa-DTI on different types of datasets（enzyme dataset, ion channel dataset, GPCR dataset, nuclear receptor dataset，and non-classified dataset）.<br>
+ For different settings in the paper, run xxx.py file with a different name (`-Descriptor.py`，`-Hetro.py`，`-DDI&PPI.py`，`-Disease.py`，`-Pathway.py`，`-GO.py`，`-GOsim.py`).<br>
+ For grid search for hyperparameters, run `GridSearchCV_for_standard_hyperparameters.py` to determine the values of four standard hyperparameters, run `GridSearchCV_for_GOsim_th.py`，`GridSearchCV_for_low-dimensional_dimensions`，and `GridSearchCV_for_n_hiddens_DNN.py` to determine extended hyperparameters.<br>
  Run `DNN.py` to perform DNN-o and DNN-d.<br>
- Run `prediction_result_10fold.py` to get the prediction scores of all drug-protein pairs.
+ Run `HNetPa-DTI_10fold.py` to get the prediction scores of all drug-protein pairs.
 
 Code and data
 ===
@@ -29,7 +31,8 @@ Raw data
 （4）Drug-Disease Associations（network/Dr_D_m_39187.csv and Dr_D_t_21908.csv）: the drug-disease related associations and drug-disease therapeutic associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).<br>
 （5）Protein-Disease Associations（network/P_D_m_29201.csv and P_D_t_1933.csv）: the protein-disease related associations and protein-disease therapeutic associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).<br>
 （6）Protein-GO term Associations（GO/GO_uniprot/GO_MF_9071.csv，GO_BP_18737.csv，GO_CC_9990.csv）：the protein-GO term associations were downloaded from QuickGO browser（https://www.ebi.ac.uk/QuickGO/）.<br>
-（7）Extra Drug-Target Interactions（case studies/KEGG/DTI_3920.csv and case studies/CHEMBL/DTI_6982.csv）：the extra drug-target interactions were downloaded from KEGG BRITE database（https://www.kegg.jp/brite/br08906） and ChEMBL database（https://chembl.gitbook.io/chembl-interface-documentation/downloads）.
+（7）Protein-Pathway Associations（Pathway/uniprot_pathways_25161.csv and all_pathway_id_2392.csv）：the protein-Pathway associations were downloaded from KEGG Mapper（https://www.genome.jp/kegg/mapper/），Reactome database（https://reactome.org/download-data），and Wikipathways dataset（Python package pywikipathways）.<br>
+（8）Extra Drug-Target Interactions（case studies/KEGG/DTI_3920.csv and case studies/CHEMBL/DTI_6982.csv）：the extra drug-target interactions were downloaded from KEGG BRITE database（https://www.kegg.jp/brite/br08906） and ChEMBL database（https://chembl.gitbook.io/chembl-interface-documentation/downloads）.
 
 Construction of datasets
 ------
@@ -67,6 +70,12 @@ Under the DrugBank dataset folder<br>
 （1）Run `select_negative_from_N3_5_7_9_randomly.R` to get negative samples from N3-N9.<br>
 （2）Run `select_negative_with_bias_from_N3_5_7_9_randomly.R` to get negative samples with hidden bias1 from N3-N9.<br>
 （3）Run `train_valid_test_dataset_neg3_5_7_9.py` to divide the datasets into training/validation/testing set.
+
+Different types of datasets (i.e., enzyme dataset, ion channel dataset, GPCR dataset, nuclear receptor dataset，and non-classified dataset in the paper)
+------
+Under the differnet types of datasets folder<br>
+（1）Run `negative_net.R` to get negative samples for different datasets.<br>
+（2）Run `train_valid_test_dataset_different.py` to divide the datasets into training/validation/testing set.
 
 Calculation of feature
 ------
