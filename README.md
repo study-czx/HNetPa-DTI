@@ -13,7 +13,7 @@ Usage
 ===
  All data are csv files of binary relational data<br>
  Unzip the folders GO.rar<br>
- Run HNetPa-DTI.py<br>
+ Run `HNetPa-DTI.py`<br>
  For neg3, neg5, neg7, neg9, neg3-bias, neg5-bias, neg7-bias and neg9-bias dataset, and two imbalanced datasets，run `HNetPa-DTI_Neg3579_and_neg3_5.py`.<br>
  Run `HNetPa-DTI_for_different_type_dataset.py` to perform HNetPa-DTI on different types of datasets（enzyme dataset, ion channel dataset, GPCR dataset, nuclear receptor dataset，and non-classified dataset）.<br>
  For different settings in the paper, run xxx.py file with a different name (`-Descriptor.py`，`-Hetro.py`，`-DDI&PPI.py`，`-Disease.py`，`-Pathway.py`，`-GO.py`，`-GOsim.py`).<br>
