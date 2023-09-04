@@ -266,7 +266,6 @@ class My_Net(nn.Module):
         self.output = nn.Linear(in_features=64, out_features=1)
         self.sigmoid = nn.Sigmoid()
 
-    # 前向传播
     def forward(self, x_dr, x_p, finger_feats, seq_feats, disease_feat, MF_feat, BP_feat, CC_feat,
                 GO2P_G, my_G):
         h_dr_finger, h_p_seq = self.dr_p_embedding(finger_feats, seq_feats)
