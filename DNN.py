@@ -29,7 +29,7 @@ num_epoches = 200
 # GPU
 device = torch.device("cuda:0"if torch.cuda.is_available() else "cpu")
 
-# 输入药物与蛋白特征
+# feature
 Pubchem = np.loadtxt(r"./feature/Pubchem.csv", dtype=float, delimiter=",", skiprows=0)
 KSCTriad = np.loadtxt(r"./feature/KSCTriad.csv", dtype=float, delimiter=",", skiprows=0)
 Drug_id = np.loadtxt(r"./network_node/All_drug_id_2223.csv", dtype=str, delimiter=",", skiprows=1)
@@ -68,7 +68,7 @@ class DNNNet(nn.Module):
         self.connected_layer3 = nn.Sequential(nn.Linear(in_features=n_hidden, out_features=64), nn.BatchNorm1d(num_features=64), nn.ReLU())
         self.output = nn.Linear(in_features=64, out_features=1)
         self.sigmoid = nn.Sigmoid()
-    # 前向传播
+
     def forward(self, Drug_feature, Protein_feature, x_dr, x_p):
         dr_feat, p_feat = Drug_feature[x_dr].squeeze(1), Protein_feature[x_p].squeeze(1)
         h_dr = self.drug_hidden_layer1(dr_feat)
