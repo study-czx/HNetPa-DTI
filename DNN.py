@@ -7,14 +7,20 @@ import funcs
 
 funcs.setup_seed(1)
 
-# my_dataset
-# data_types = ["DrugBank dataset/DTI-rand dataset/"]
-data_types = ["DrugBank dataset/DTI-net dataset/"]
+# this_model = 'DNN-o'
+this_model = 'DNN-d'
 
-types = ["random", "new_drug", "new_protein", "new_drug_protein"]
+# my_dataset
+data_types = ["DrugBank dataset/DTI-rand dataset/", "DrugBank dataset/DTI-net dataset/"]
+types = ["random","new_drug","new_protein","new_drug_protein"]
+
 # neg3,5,7,9 and neg3-b,neg5-b,neg7-b,neg9-b
-# data_types = ["DrugBank dataset/DTI-neg3_5_7_9/", "DrugBank dataset/DTI-neg-bias3_5_7_9/"]
+# data_types = ["DrugBank dataset/DTI-neg3_5_7_9/","DrugBank dataset/DTI-neg-bias3_5_7_9/"]
 # types = ["neg3", "neg5", "neg7", "neg9"]
+
+# P:N = 1:3 and P:N = 1:5
+# data_types = ["DrugBank dataset/DTI-net dataset_with_3(5)fold_neg/"]
+# types = ["3_negative", "5_negative"]
 
 b_size, n_hidden = 128, 128
 lr, wd = 1e-4, 1e-4
@@ -23,7 +29,7 @@ num_epoches = 200
 # GPU
 device = torch.device("cuda:0"if torch.cuda.is_available() else "cpu")
 
-
+# 输入药物与蛋白特征
 Pubchem = np.loadtxt(r"./feature/Pubchem.csv", dtype=float, delimiter=",", skiprows=0)
 KSCTriad = np.loadtxt(r"./feature/KSCTriad.csv", dtype=float, delimiter=",", skiprows=0)
 Drug_id = np.loadtxt(r"./network_node/All_drug_id_2223.csv", dtype=str, delimiter=",", skiprows=1)
@@ -33,12 +39,15 @@ Protein_id = np.loadtxt(r"./network_node/All_protein_id_13816.csv", dtype=str, d
 dr_id_map, p_id_map = funcs.id_map(Drug_id), funcs.id_map(Protein_id)
 
 # DNN-d
-drug_feats = Pubchem
-protein_feats = KSCTriad
-
+if this_model == 'DNN-d':
+    drug_feats = Pubchem
+    protein_feats = KSCTriad
 # DNN-o
-# drug_feats = np.identity(n_drugs)
-# protein_feats = np.identity(n_proteins)
+elif this_model == 'DNN-o':
+    n_drugs = 1520
+    n_proteins = 1771
+    drug_feats = np.identity(n_drugs)
+    protein_feats = np.identity(n_proteins)
 
 # feature to GPU
 n_drug_feature = len(drug_feats[0])
@@ -59,7 +68,7 @@ class DNNNet(nn.Module):
         self.connected_layer3 = nn.Sequential(nn.Linear(in_features=n_hidden, out_features=64), nn.BatchNorm1d(num_features=64), nn.ReLU())
         self.output = nn.Linear(in_features=64, out_features=1)
         self.sigmoid = nn.Sigmoid()
-
+    # 前向传播
     def forward(self, Drug_feature, Protein_feature, x_dr, x_p):
         dr_feat, p_feat = Drug_feature[x_dr].squeeze(1), Protein_feature[x_p].squeeze(1)
         h_dr = self.drug_hidden_layer1(dr_feat)
@@ -76,15 +85,25 @@ for data_type in data_types:
     print("training on ", data_type)
     for type in types:
         print("task is ",type)
-        output_score = np.zeros(shape=(6, 5))
+        output_score = np.zeros(shape=(8, 5))
         for i in range(5):
-            seed_type = "seed" + str(i + 1)
-            train_P = np.loadtxt(data_type + seed_type + "/" + type + "/train_P.csv", dtype=str, delimiter=",",skiprows=1)
-            dev_P = np.loadtxt(data_type + seed_type + "/" + type + "/dev_P.csv", dtype=str, delimiter=",", skiprows=1)
-            test_P = np.loadtxt(data_type + seed_type + "/" + type + "/test_P.csv", dtype=str, delimiter=",",skiprows=1)
-            train_N = np.loadtxt(data_type + seed_type + "/" + type + "/train_N.csv", dtype=str, delimiter=",",skiprows=1)
-            dev_N = np.loadtxt(data_type + seed_type + "/" + type + "/dev_N.csv", dtype=str, delimiter=",", skiprows=1)
-            test_N = np.loadtxt(data_type + seed_type + "/" + type + "/test_N.csv", dtype=str, delimiter=",", skiprows=1)
+            if data_type == "DrugBank dataset/DTI-rand dataset/" or data_type == "DrugBank dataset/DTI-rand dataset/":
+                seed_type = "seed" + str(i + 1)
+                train_P = np.loadtxt(data_type + seed_type + "/" + type + "/train_P.csv", dtype=str, delimiter=",",skiprows=1)
+                dev_P = np.loadtxt(data_type + seed_type + "/" + type + "/dev_P.csv", dtype=str, delimiter=",", skiprows=1)
+                test_P = np.loadtxt(data_type + seed_type + "/" + type + "/test_P.csv", dtype=str, delimiter=",",skiprows=1)
+                train_N = np.loadtxt(data_type + seed_type + "/" + type + "/train_N.csv", dtype=str, delimiter=",",skiprows=1)
+                dev_N = np.loadtxt(data_type + seed_type + "/" + type + "/dev_N.csv", dtype=str, delimiter=",", skiprows=1)
+                test_N = np.loadtxt(data_type + seed_type + "/" + type + "/test_N.csv", dtype=str, delimiter=",",skiprows=1)
+            else:
+                seed_type = "fold" + str(i + 1)
+                train_P = np.loadtxt(data_type + type + "/" + seed_type + "/train_P.csv", dtype=str, delimiter=",",skiprows=1)
+                dev_P = np.loadtxt(data_type + type + "/" + seed_type + "/dev_P.csv", dtype=str, delimiter=",",skiprows=1)
+                test_P = np.loadtxt(data_type + type + "/" + seed_type + "/test_P.csv", dtype=str, delimiter=",",skiprows=1)
+                train_N = np.loadtxt(data_type + type + "/" + seed_type + "/train_N.csv", dtype=str, delimiter=",",skiprows=1)
+                dev_N = np.loadtxt(data_type + type + "/" + seed_type + "/dev_N.csv", dtype=str, delimiter=",",skiprows=1)
+                test_N = np.loadtxt(data_type + type + "/" + seed_type + "/test_N.csv", dtype=str, delimiter=",",skiprows=1)
+
             print("number of DTI: ", len(train_P), len(dev_P), len(test_P))
             print("number of Negative DTI ", len(train_N), len(dev_N), len(test_N))
             train_X, train_Y = funcs.Get_sample(train_P, train_N, dr_id_map, p_id_map)
@@ -140,6 +159,8 @@ for data_type in data_types:
                         dev_scores = np.concatenate((dev_scores, scores))
                         dev_labels = np.concatenate((dev_labels, label))
                     dev_auc = skm.roc_auc_score(dev_labels, dev_scores)
+                    # for P:N != 1:1, use dev_aupr
+                    # dev_aupr = skm.average_precision_score(dev_labels, dev_scores)
                     scheduler.step(dev_auc)
                     # testing
                     for step, (batch_x, batch_y) in enumerate(test_loader):
@@ -159,23 +180,32 @@ for data_type in data_types:
                     test_aupr = skm.average_precision_score(test_labels, test_scores)
                     test_mcc = skm.matthews_corrcoef(test_labels, test_scores_label)
                     test_F1 = skm.f1_score(test_labels, test_scores_label)
-                print('epoch:{},Train Loss: {:.4f},Train Acc: {:.4f},Train Auc: {:.4f},Dev Auc: {:.4f}, Test Acc: {:.4f},Test Auc: {:.4f},TestAUPR: {:.4f}'
+                    test_recall = skm.recall_score(test_labels, test_scores_label)
+                    test_precision = skm.precision_score(test_labels, test_scores_label)
+                print('epoch:{},Train Loss: {:.4f},Train Acc: {:.4f},Train Auc: {:.4f},Dev Aupr: {:.4f}, Test Acc: {:.4f},Test Auc: {:.4f},TestAUPR: {:.4f}'
                         .format(epoch, train_avloss, train_acc, train_auc, dev_auc, test_acc, test_auc, test_aupr))
                 if dev_auc >= best_auc:
                     best_auc = dev_auc
                     best_epoch = epoch
-                    best_test = [format(test_acc, '.4f'), format(test_auc, '.4f'), format(test_aupr, '.4f'), format(test_mcc, '.4f'), format(test_F1, '.4f')]
+                    best_test = [format(test_acc, '.4f'), format(test_auc, '.4f'), format(test_aupr, '.4f'),
+                                 format(test_mcc, '.4f'),
+                                 format(test_F1, '.4f'), format(test_recall, '.4f'), format(test_precision, '.4f')]
             print("best_dev_AUC:", best_auc)
             print("best_epoch", best_epoch)
             print("test_out", best_test)
-            output_score[0][i], output_score[1][i], output_score[2][i], output_score[3][i], output_score[4][i], output_score[5][i] = best_auc, best_test[0], best_test[1], best_test[2], best_test[3], best_test[4]
+            output_score[0][i], output_score[1][i], output_score[2][i], output_score[3][i], output_score[4][i], \
+            output_score[5][i], output_score[6][i], output_score[7][i] = best_auc, best_test[0], \
+                                                                         best_test[1], best_test[2], best_test[3], \
+                                                                         best_test[4], best_test[5], best_test[6]
 
         print(output_score)
-        mean_acc, mean_auc, mean_aupr, mean_mcc, mean_f1 = \
-            np.nanmean(output_score[1]), np.nanmean(output_score[2]), np.nanmean(output_score[3]), np.nanmean(output_score[4]), \
-            np.nanmean(output_score[5]))
-        std_acc, std_auc, std_aupr, std_mcc, std_f1 = \
-            np.nanstd(output_score[1]), np.nanstd(output_score[2]), np.nanstd(output_score[3]), np.nanstd(output_score[4]), \
-            np.nanstd(output_score[5]))
-        print(mean_acc, mean_auc, mean_aupr, mean_mcc, mean_f1)
-        print(std_acc, std_auc, std_aupr, std_mcc, std_f1)
+        mean_acc, mean_auc, mean_aupr, mean_mcc, mean_f1, mean_recall, mean_precision = \
+            np.nanmean(output_score[1]), np.nanmean(output_score[2]), np.nanmean(output_score[3]), np.nanmean(
+                output_score[4]), \
+            np.nanmean(output_score[5]), np.nanmean(output_score[6]), np.nanmean(output_score[7])
+        std_acc, std_auc, std_aupr, std_mcc, std_f1, std_recall, std_precision = \
+            np.nanstd(output_score[1]), np.nanstd(output_score[2]), np.nanstd(output_score[3]), np.nanstd(
+                output_score[4]), \
+            np.nanstd(output_score[5]), np.nanstd(output_score[6]), np.nanstd(output_score[7])
+        print(mean_acc, mean_auc, mean_aupr, mean_mcc, mean_f1, mean_recall, mean_precision)
+        print(std_acc, std_auc, std_aupr, std_mcc, std_f1, std_recall, std_precision)

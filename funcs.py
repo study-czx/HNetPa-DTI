@@ -237,12 +237,8 @@ def Get_Disease_Graph(Dr_D_m_data, Dr_D_t_data, P_D_m_data, num_nodes_dict):
     return G
 
 def Add_Dr_P_Net_Graph(train_Dr_P, Dr_D_m_data, Dr_D_t_data, P_D_m_data, Dr_Dr_data, P_P_data, num_nodes_dict):
-    Dr_P_Dr, Dr_P_P = [], []
-    Dr_t_D_Dr, Dr_t_D_D = [], []
-    Dr_m_D_Dr, Dr_m_D_D = [], []
-    P_m_D_P, P_m_D_D = [], []
-    Dr_Dr_data_src, Dr_Dr_data_dst = [], []
-    P_P_data_src, P_P_data_dst = [], []
+    Dr_P_Dr, Dr_P_P,Dr_t_D_Dr, Dr_t_D_D, Dr_m_D_Dr, Dr_m_D_D, P_m_D_P, P_m_D_D = [], [], [], [], [], [], [], []
+    Dr_Dr_data_src, Dr_Dr_data_dst, P_P_data_src, P_P_data_dst = [], [], [], []
     for i in range(len(train_Dr_P)):
         Dr_P_Dr.append(train_Dr_P[i][0])
         Dr_P_P.append(train_Dr_P[i][1])
@@ -261,29 +257,20 @@ def Add_Dr_P_Net_Graph(train_Dr_P, Dr_D_m_data, Dr_D_t_data, P_D_m_data, Dr_Dr_d
     for i in range(len(P_P_data)):
         P_P_data_src.append(P_P_data[i][0])
         P_P_data_dst.append(P_P_data[i][1])
-    dr_p_src, dr_p_dst = torch.tensor(Dr_P_Dr), torch.tensor(Dr_P_P)
-    dr_d_t_src, dr_d_t_dst = torch.tensor(Dr_t_D_Dr), torch.tensor(Dr_t_D_D)
-    dr_d_m_src, dr_d_m_dst = torch.tensor(Dr_m_D_Dr), torch.tensor(Dr_m_D_D)
-    p_d_m_src, p_d_m_dst = torch.tensor(P_m_D_P), torch.tensor(P_m_D_D)
+    dr_p_src, dr_p_dst, dr_d_t_src, dr_d_t_dst = torch.tensor(Dr_P_Dr), torch.tensor(Dr_P_P),torch.tensor(Dr_t_D_Dr), torch.tensor(Dr_t_D_D)
+    dr_d_m_src, dr_d_m_dst,p_d_m_src, p_d_m_dst = torch.tensor(Dr_m_D_Dr), torch.tensor(Dr_m_D_D),torch.tensor(P_m_D_P), torch.tensor(P_m_D_D)
     DDI_src, DDI_dst = torch.tensor(Dr_Dr_data_src+Dr_Dr_data_dst), torch.tensor(Dr_Dr_data_dst+Dr_Dr_data_src)
     PPI_src, PPI_dst = torch.tensor(P_P_data_src+P_P_data_dst), torch.tensor(P_P_data_dst+P_P_data_src)
-    graph_data = {('drug', 'dr-p', 'protein'): (dr_p_src, dr_p_dst),
-                  ('protein', 'p-dr', 'drug'): (dr_p_dst, dr_p_src),
-                  ('disease', 'd-t-dr', 'drug'): (dr_d_t_dst, dr_d_t_src),
-                  ('disease', 'd-m-dr', 'drug'): (dr_d_m_dst, dr_d_m_src),
-                  ('disease', 'd-p', 'protein'): (p_d_m_dst, p_d_m_src),
-                  ('drug', 'dr-t-d', 'disease'): (dr_d_t_src, dr_d_t_dst),
-                  ('drug', 'dr-m-d', 'disease'): (dr_d_m_src, dr_d_m_dst),
-                  ('protein', 'p-d', 'disease'): (p_d_m_src, p_d_m_dst),
-                  ('drug', 'DDI', 'drug'): (DDI_src, DDI_dst),
-                  ('protein', 'PPI', 'protein'): (PPI_src, PPI_dst)}
+    graph_data = {('drug', 'dr-p', 'protein'): (dr_p_src, dr_p_dst),('protein', 'p-dr', 'drug'): (dr_p_dst, dr_p_src),
+                  ('disease', 'd-t-dr', 'drug'): (dr_d_t_dst, dr_d_t_src),('disease', 'd-m-dr', 'drug'): (dr_d_m_dst, dr_d_m_src),
+                  ('disease', 'd-p', 'protein'): (p_d_m_dst, p_d_m_src),('drug', 'dr-t-d', 'disease'): (dr_d_t_src, dr_d_t_dst),
+                  ('drug', 'dr-m-d', 'disease'): (dr_d_m_src, dr_d_m_dst),('protein', 'p-d', 'disease'): (p_d_m_src, p_d_m_dst),
+                  ('drug', 'DDI', 'drug'): (DDI_src, DDI_dst),('protein', 'PPI', 'protein'): (PPI_src, PPI_dst)}
     G = dgl.heterograph(graph_data, num_nodes_dict=num_nodes_dict)
     return G
 
 def Get_GO2P_Graph(P_MF_data, P_BP_data, P_CC_data, num_nodes_dict):
-    MF_P, MF_GO = [], []
-    BP_P, BP_GO = [], []
-    CC_P, CC_GO = [], []
+    MF_P, MF_GO, BP_P, BP_GO, CC_P, CC_GO = [], [], [], [], [], []
     for i in range(len(P_MF_data)):
         MF_P.append(P_MF_data[i][0])
         MF_GO.append(P_MF_data[i][1])
@@ -299,5 +286,15 @@ def Get_GO2P_Graph(P_MF_data, P_BP_data, P_CC_data, num_nodes_dict):
     data = {('MF', 'MF-p', 'protein'): (MF_dst, MF_src),
             ('BP', 'BP-p', 'protein'): (BP_dst, BP_src),
             ('CC', 'CC-p', 'protein'): (CC_dst, CC_src)}
+    G = dgl.heterograph(data, num_nodes_dict=num_nodes_dict)
+    return G
+
+def Get_Pathway2P_Graph_one(P_Pathway, num_nodes_dict):
+    Path_P, P_Path = [], []
+    for i in range(len(P_Pathway)):
+        Path_P.append(P_Pathway[i][0])
+        P_Path.append(P_Pathway[i][1])
+    P_Pathway_src, P_Pathway_dst = torch.tensor(Path_P), torch.tensor(P_Path)
+    data = {('pathway', 'path-p', 'protein'): (P_Pathway_dst, P_Pathway_src)}
     G = dgl.heterograph(data, num_nodes_dict=num_nodes_dict)
     return G
