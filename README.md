@@ -31,7 +31,7 @@ Raw data
 （4）Drug-Disease Associations（network/Dr_D_m_39187.csv and Dr_D_t_21908.csv）: the drug-disease related associations and drug-disease therapeutic associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).<br>
 （5）Protein-Disease Associations（network/P_D_m_29201.csv and P_D_t_1933.csv）: the protein-disease related associations and protein-disease therapeutic associations were downloaded from CTD database (https://ctdbase.com/downloads/;jsessionid=037CE87EB76C543AB26A7DA404D4631D).<br>
 （6）Protein-GO term Associations（GO/GO_uniprot/GO_MF_9071.csv，GO_BP_18737.csv，GO_CC_9990.csv）：the protein-GO term associations were downloaded from QuickGO browser（https://www.ebi.ac.uk/QuickGO/）.<br>
-（7）Protein-Pathway Associations（Pathway/uniprot_pathways_25161.csv and all_pathway_id_2392.csv）：the protein-Pathway associations were downloaded from KEGG Mapper（https://www.genome.jp/kegg/mapper），Reactome database（https://reactome.org/download-data），and Wikipathways dataset（Python package pywikipathways）.<br>
+（7）Protein-Pathway Associations（Pathway/uniprot_pathways_25161.csv and all_pathway_id_2392.csv）：the protein-Pathway associations were downloaded from KEGG Mapper（https://www.genome.jp/kegg/mapper）, Reactome database（https://reactome.org/download-data），and Wikipathways dataset（Python package pywikipathways）.<br>
 （8）Extra Drug-Target Interactions（case studies/KEGG/DTI_3920.csv and case studies/CHEMBL/DTI_6982.csv）：the extra drug-target interactions were downloaded from KEGG BRITE database（https://www.kegg.jp/brite/br08906） and ChEMBL database（https://chembl.gitbook.io/chembl-interface-documentation/downloads）.
 
 Construction of datasets
