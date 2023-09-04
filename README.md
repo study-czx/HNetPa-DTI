@@ -13,8 +13,8 @@ Usage
 ===
  All data are csv files of binary relational data<br>
  Unzip the folders GO.rar<br>
- Run HNetGO-DTI.py<br>
- For different settings in the paper, run xxx.py file with a different name (`Descriptor&GO.py`，`Descriptor&DDI&PPI.py`，`Descriptor&Disease.py`，`Descriptor&Heterogeneous.py`，`GO&Heterogeneous.py`).<br>
+ Run HNetPa-DTI.py<br>
+ For different settings in the paper, run xxx.py file with a different name (`-Descriptor.py`，`Descriptor&DDI&PPI.py`，`Descriptor&Disease.py`，`Descriptor&Heterogeneous.py`，`GO&Heterogeneous.py`).<br>
  For different k% in GO term semantic similarity networks, run `GO_th.py` with weighted GNNs, run `GO_th_noweight.py` with unweighted GNNs.<br>
  Run `DNN.py` to perform DNN-o and DNN-d.<br>
  Run `prediction_result_10fold.py` to get the prediction scores of all drug-protein pairs.
