@@ -102,7 +102,7 @@ P_CC_data = funcs.Get_index(GO_CC, p_id_map, cc_id_map)
 D_D_data = funcs.Get_index(Drugbank_DDI, dr_id_map, dr_id_map)
 P_P_data = funcs.Get_index(Uniprot_PPI, p_id_map, p_id_map)
 
-# 注释信息
+# pathway information
 P_Pathway = funcs.Get_index(Protein_Pathway, p_id_map, pathway_id_map)
 num_nodes_dict_Pathway = {'pathway': n_pathways, 'protein': n_proteins}
 num_nodes_pathways = n_pathways
