@@ -405,7 +405,7 @@ for train_index, dev_index in skf.split(X, Y):
             b_x = batch_x.long().to(device)
             b_x_dr = torch.reshape(b_x[:, 0], (len(b_x), 1))
             b_x_p = torch.reshape(b_x[:, 1], (len(b_x), 1))
-            output = model(b_x_dr, b_x_p, finger_feats, seq_feats, disease_feats,
+            output = my_model(b_x_dr, b_x_p, finger_feats, seq_feats, disease_feats,
                            MF_feat, BP_feat, CC_feat, pathway_feat, GO2P_G, my_G, Path2P_G)
             score = torch.squeeze(output, dim=1)
             scores = score.cpu().detach().numpy()
