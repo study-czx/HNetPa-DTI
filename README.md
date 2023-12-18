@@ -91,3 +91,12 @@ Analysis of prediction scores of the DTIs from other databases
 Under the case studies folder<br>
 （1）Run `case studies.R` to view prediction scores of training sets and predict other scores.（Predict_scores.csv）<br>
 （2）Run `analysis_scores.R` to view the prediction scores of the DTIs of KEGG database and ChEMBL database.
+
+Model Interpretation
+------
+（1）Under the feature folder, run `cal_feature_sims.R` to calculate PubChem fingerprint similarities and KSCTriad similarities.（Pubchem_sim_1520.csv and KSCTriad_sim_1771.csv）<br>
+（2）Run `Get_network_similarity.py` to calculate the first-order neighbor Jaccard similarities in HNet-DrPD-P. （feature/Dr_D_P_one_order_similarities.csv）<br>
+（3）Run `analysis_model_interpretation.py` to calculate the similarities in 'J. Model Interpretation'.
+
+
+
