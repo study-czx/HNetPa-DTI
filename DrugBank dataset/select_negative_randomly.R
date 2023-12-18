@@ -1,8 +1,8 @@
 library(dplyr)
 
-dr_id = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/Drug_1409.csv",header=T)
-p_id = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/Protein_1648.csv",header=T)
-postive = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-benchmark_set/DTI_8020.csv",header=T)
+dr_id = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/DTI-benchmark_set/Drug_1409.csv",header=T)
+p_id = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/DTI-benchmark_set/Protein_1648.csv",header=T)
+postive = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/DTI-benchmark_set/DTI_8020.csv",header=T)
 
 colnames(postive)[1] = 'drugbank_id'
 colnames(postive)[2] = 'uniprot_id'
@@ -105,15 +105,15 @@ n_all = unique(n_all)
 
 x = unique(n_all[,1])
 y = unique(n_all[,2])
-write.csv(n_all,file="D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg_DTI-rand_8020.csv",row.names =FALSE,quote = F)
+write.csv(n_all,file="D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/neg_DTI-rand_8020.csv",row.names =FALSE,quote = F)
 
 
 
 #########################################################################################################################################################
 # for DTI-extra set
-dr_id = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-extra_set/Drug_111.csv",header=T)
-p_id = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-extra_set/Protein_123.csv",header=T)
-postive = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/DTI-extra_set/DTI_187.csv",header= T)
+dr_id = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/DTI-extra_set/Drug_111.csv",header=T)
+p_id = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/DTI-extra_set/Protein_123.csv",header=T)
+postive = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/DTI-extra_set/DTI_187.csv",header= T)
 
 colnames(postive)[1] = 'drugbank_id'
 colnames(postive)[2] = 'uniprot_id'
@@ -170,7 +170,7 @@ n_1_2_new = unique(n_1_2)
 
 rand = sample(1:length(n_1_2_new[,1]),n_P)
 n_1_2_news = n_1_2_new[rand,]
-write.csv(n_1_2_news,file="D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg_DTI-rand_187.csv",row.names =FALSE,quote = F)
+write.csv(n_1_2_news,file="D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/neg_DTI-rand_187.csv",row.names =FALSE,quote = F)
 
 
 

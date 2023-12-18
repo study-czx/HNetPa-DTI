@@ -1,9 +1,9 @@
-All_scores = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/All_scores_10fold.csv",header= T)
+All_scores = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/All_scores_10fold.csv",header= T)
 
-Drug_id = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/DrugBank dataset/DTI-benchmark_set/Drug_1409.csv",header= T)
-Protein_id = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/DrugBank dataset/DTI-benchmark_set/Protein_1648.csv",header= T)
-know_DTI = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/DrugBank dataset/DTI-benchmark_set/DTI_8020.csv",header= T)
-negative_samples = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/DrugBank dataset/negative samples/neg_DTI-net_8020.csv",header= T)
+Drug_id = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/DrugBank dataset/DTI-benchmark_set/Drug_1409.csv",header= T)
+Protein_id = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/DrugBank dataset/DTI-benchmark_set/Protein_1648.csv",header= T)
+know_DTI = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/DrugBank dataset/DTI-benchmark_set/DTI_8020.csv",header= T)
+negative_samples = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/DrugBank dataset/negative samples/neg_DTI-net_8020.csv",header= T)
 
 rownames(All_scores) = unlist(Drug_id)
 colnames(All_scores) = unlist(Protein_id)
@@ -59,5 +59,5 @@ predict_scoress = anti_join(predict_scores,negative_samples,by=c("drugbank_id","
 m = as.numeric(predict_scoress [,3]) 
 hist(m,breaks = 10,labels = TRUE)
 my_predict_score = predict_scoress[order(predict_scoress$scores,decreasing = TRUE),]
-write.csv(my_predict_score,"D:/Users/czx/PycharmProjects/HNGO-DTI/Predict_scores.csv",,row.names = F)
+write.csv(my_predict_score,"D:/Users/czx/PycharmProjects/HNetPa-DTI/Predict_scores.csv",,row.names = F)
 

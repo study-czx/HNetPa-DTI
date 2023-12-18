@@ -1,9 +1,9 @@
 # select negative samples with hidden bias1
 library(dplyr)
-my_neg3 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N3.csv",header=T)
-my_neg5 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N5.csv",header=T)
-my_neg7 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N7.csv",header=T)
-my_neg9 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N9.csv",header=T)
+my_neg3 = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N3.csv",header=T)
+my_neg5 = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N5.csv",header=T)
+my_neg7 = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N7.csv",header=T)
+my_neg9 = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N9.csv",header=T)
 
 n_P = 8020
 all_drug_id = sort(unique(my_neg3[,1]))
@@ -102,7 +102,7 @@ n_all = unique(n_all)
 output_neg3 = n_all
 # output_neg5 = n_all, output_neg7 = n_all, output_neg9 = n_all
 
-write.csv(output_neg3,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg-bias3_5_7_9/neg3_8020.csv",row.names =FALSE,quote = F)
-write.csv(output_neg5,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg-bias3_5_7_9/neg5_8020.csv",row.names =FALSE,quote = F)
-write.csv(output_neg7,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg-bias3_5_7_9/neg7_8020.csv",row.names =FALSE,quote = F)
-write.csv(output_neg9,file = "D:/Users/czx/PycharmProjects/HNGO-DTI/Drugbank dataset/negative samples/neg-bias3_5_7_9/neg9_8020.csv",row.names =FALSE,quote = F)
+write.csv(output_neg3,file = "D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/neg-bias3_5_7_9/neg3_8020.csv",row.names =FALSE,quote = F)
+write.csv(output_neg5,file = "D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/neg-bias3_5_7_9/neg5_8020.csv",row.names =FALSE,quote = F)
+write.csv(output_neg7,file = "D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/neg-bias3_5_7_9/neg7_8020.csv",row.names =FALSE,quote = F)
+write.csv(output_neg9,file = "D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/neg-bias3_5_7_9/neg9_8020.csv",row.names =FALSE,quote = F)

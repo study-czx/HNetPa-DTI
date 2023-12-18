@@ -77,7 +77,7 @@ n_P = length(positive[,1])
 
 ########################################################################################################################
 # negative2
-n0_o = read.csv("D:/Users/czx/PycharmProjects/1-1HGDTI-code/Drugbank dataset/negative samples/extra_neg3.csv",header= T)
+n0_o = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/extra_neg3.csv",header= T)
 colnames(n0_o) = c('drugbank_id','uniprot_id')
 
 n0_o = semi_join(n0_o, positive_2, by='drugbank_id')
@@ -126,8 +126,8 @@ colnames(n_1_2_new) = c('drugbank_id','uniprot_id')
 ###############################################################################################################################
 # negative1
 # neg3， neg5
-neg3_o = read.csv("D:/Users/czx/PycharmProjects/1-1HGDTI-code/Drugbank dataset/negative samples/my_need_neg3.csv",header=T)
-neg5_o = read.csv("D:/Users/czx/PycharmProjects/1-1HGDTI-code/Drugbank dataset/negative samples/my_need_neg5.csv",header=T)
+neg3_o = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/my_need_neg3.csv",header=T)
+neg5_o = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/my_need_neg5.csv",header=T)
 colnames(neg3_o) = c('drugbank_id','uniprot_id')
 colnames(neg5_o) = c('drugbank_id','uniprot_id')
 
@@ -175,8 +175,8 @@ negative5_1 = unique(rbind(n_1,n_2))
 # for drug and protein not in l_h>=3,  select from N3
 remain_drug = setdiff(unlist(positive_1$drugbank_id),unlist(unique(neg_all[,1])))
 remain_protein = setdiff(unlist(positive_1$uniprot_id),unlist(unique(neg_all[,2])))
-N3 = read.csv("D:/Users/czx/PycharmProjects/1-1HGDTI-code/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N3.csv",header=T)
-N5 = read.csv("D:/Users/czx/PycharmProjects/1-1HGDTI-code/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N5.csv",header=T)
+N3 = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N3.csv",header=T)
+N5 = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/Drugbank dataset/negative samples/DTI benchmark N3_5_7_9/N5.csv",header=T)
 colnames(N3) = c('drugbank_id','uniprot_id')
 colnames(N5) = c('drugbank_id','uniprot_id')
 

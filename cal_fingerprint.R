@@ -2,7 +2,7 @@ library(rcdk)
 library(philentropy)
 library(fingerprint)
 
-data = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/feature/drug_structure_2223.csv",header=T)
+data = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/feature/drug_structure_2223.csv",header=T)
 id = data[,1]
 smiles = data[,3]
 
@@ -14,4 +14,4 @@ fps = lapply(mols,get.fingerprint,type='pubchem')
 f = fp.to.matrix(fps)
 
 
-write.csv(f,file="D:/Users/czx/PycharmProjects/HNGO-DTI/feature/Pubchem.csv",row.names =FALSE)
+write.csv(f,file="D:/Users/czx/PycharmProjects/HNetPa-DTI/feature/Pubchem.csv",row.names =FALSE)

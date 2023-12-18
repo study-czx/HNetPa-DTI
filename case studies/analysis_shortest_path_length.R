@@ -1,12 +1,12 @@
 library(dplyr)
-Drug_1520 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/DrugBank dataset/Drug_1520.csv",header= T)
-Protein_1771 = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/DrugBank dataset/Protein_1771.csv",header= T)
+Drug_1520 = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/DrugBank dataset/Drug_1520.csv",header= T)
+Protein_1771 = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/DrugBank dataset/Protein_1771.csv",header= T)
 
 colnames(Drug_1520) = "Drug"
 colnames(Protein_1771) = "Protein"
 # KEGG
-KEGG_DTI = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/case studies/KEGG/DTI_3920.csv",header= T)
-CHEMBL_DTI = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/case studies/CHEMBL/DTI_6982.csv",header= T)
+KEGG_DTI = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/case studies/KEGG/DTI_3920.csv",header= T)
+CHEMBL_DTI = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/case studies/CHEMBL/DTI_6982.csv",header= T)
 
 # get need DTIs (1520drug - 1771protein)
 colnames(KEGG_DTI)[1] = "Drug"
@@ -21,7 +21,7 @@ CHEMBL_DTI1 = semi_join(CHEMBL_DTI,Drug_1520,by="Drug")
 CHEMBL_DTI2 = semi_join(CHEMBL_DTI1,Protein_1771,by="Protein")
 CHEMBL_DTI3 = CHEMBL_DTI2[order(CHEMBL_DTI2$Drug),]
 
-know_DTI = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/DrugBank dataset/DTI_8207.csv",header= T)
+know_DTI = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/DrugBank dataset/DTI_8207.csv",header= T)
 colnames(know_DTI)[1] = "Drug"
 colnames(know_DTI)[2] = "Protein"
 
@@ -29,7 +29,7 @@ extra_KEGG_DTI = anti_join(KEGG_DTI3,know_DTI,by=c("Drug","Protein"))
 extra_CHEMBL_DTI = anti_join(CHEMBL_DTI3,know_DTI,by=c("Drug","Protein"))
 
 # analysis shortest path length
-lh = read.csv("D:/Users/czx/PycharmProjects/HNGO-DTI/DrugBank dataset/Dr_D_P_shortest_length.csv",header= T)
+lh = read.csv("D:/Users/czx/PycharmProjects/HNetPa-DTI/DrugBank dataset/Dr_D_P_shortest_length.csv",header= T)
 rownames(lh) = unlist(Drug_1520)
 colnames(lh) = unlist(Protein_1771)
 
