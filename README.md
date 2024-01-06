@@ -62,7 +62,7 @@ Under the DrugBank dataset folder，run `train_valid_test_dataset.py` to divide 
 
 Analysis of shortest path lengths in the heterogeneous network
 ------
-Under the case studies folder，run `analysis_shortest_path_length.R` to view l_h of the DTIs of KEGG database and ChEMBL database.
+Under the case studies folder，run `analysis_shortest_path_length.R` to view l_h of the DTIs of the latest versions of the DrugBank, KEGG and ChEMBL databases.(2024.1.6)
 
 Negative samples from N3-N9 (i.e., neg3-neg9, and neg3-b-neg9-b in the paper)
 ------
@@ -86,11 +86,13 @@ Run `cal_GO_sim.R` to calculate GO similarity values. (GO/GO_sim/)
 （1）Run `cal_fingerprint.R` to calculate the PubChem fingerprint.(feature/)<br>
 （2）Run `trans_to_fasta.R` to convert protein_seq_13816.csv to protein_13816.fasta, and then use the iLearnPlus to calculate the KSCTriad.(feature/)
 
-Analysis of prediction scores of the DTIs from other databases
+Case Study
 ------
 Under the case studies folder<br>
 （1）Run `case studies.R` to view prediction scores of training sets and predict other scores.（Predict_scores.csv）<br>
-（2）Run `analysis_scores.R` to view the prediction scores of the DTIs of KEGG database and ChEMBL database.
+（2）Run `analysis_scores.R` to view the prediction scores of the DTIs of the latest versions of the DrugBank, KEGG and ChEMBL databases.(2024.1.6)<br>
+（3）Run `Get_top_candidate.R` to get the top 10 predicted proteins for each drug as candidate targets.(drug_top10.csv)<br>
+（4）Run `analysis_top_candidate.R` to validate candidate DTIs across three databases.
 
 Model Interpretation
 ------
