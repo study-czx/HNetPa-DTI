@@ -89,10 +89,9 @@ Run `cal_GO_sim.R` to calculate GO similarity values. (GO/GO_sim/)
 Case Study
 ------
 Under the case studies folder<br>
-（1）Run `case studies.R` to view prediction scores of training sets and predict other scores.（Predict_scores.csv）<br>
+（1）Run `case studies.R` to view prediction scores of training sets and predict other scores, and get top 10 scores.（Predict_scores.csv, case studies/top10_socres）<br>
 （2）Run `analysis_scores.R` to view the prediction scores of the DTIs of the latest versions of the DrugBank, KEGG and ChEMBL databases.(2024.1.6)<br>
-（3）Run `Get_top_candidate.R` to get the top 10 predicted proteins for each drug as candidate targets.(drug_top10.csv)<br>
-（4）Run `analysis_top_candidate.R` to validate candidate DTIs across three databases.
+（3）Run `analysis_top_candidate.R` to validate top 10 candidate DTIs across three databases.
 
 Model Interpretation
 ------
