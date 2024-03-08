@@ -99,5 +99,7 @@ Model Interpretation
 （2）Run `Get_network_similarity.py` to calculate the first-order neighbor Jaccard similarities in HNet-DrPD-P. （feature/Dr_D_P_one_order_similarities.csv）<br>
 （3）Run `analysis_model_interpretation.py` to calculate the similarities in 'J. Model Interpretation'.
 
-
+For citation
+------
+Z. Cheng, D. Xu, D. Ding and Y. Ding, "Prediction of Drug-Target Interactions with High-Quality Negative Samples and A Network-Based Deep Learning Framework," in IEEE Journal of Biomedical and Health Informatics, doi: 10.1109/JBHI.2024.3354953.
 
